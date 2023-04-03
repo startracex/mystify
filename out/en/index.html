@@ -1,0 +1,201 @@
+<html class="dark">
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.1">
+   <link rel="stylesheet" href="/public/css/posts.css">
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css">
+   <link rel="stylesheet/less" type="text/css" href="/public/less/mdstyle.less">
+   <script src="//cdn.jsdelivr.net/npm/less@4"></script>
+   <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+   <nav>
+      <details id="-catalog" class="o1180 nav-cat">
+         <summary>
+            <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+               <path d="M7.94971 11.9497H39.9497" stroke="#000" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+               <path d="M7.94971 23.9497H39.9497" stroke="#000" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+               <path d="M7.94971 35.9497H39.9497" stroke="#000" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            </svg>
+         </summary>
+         <div>
+            
+            <a href="/MDSiteBuilder/en/index.html" class="H1"> Docs</a>
+            
+            <a href="/MDSiteBuilder/en/func/index.html" class="H2"> function</a>
+            
+            <a href="/MDSiteBuilder/en/func/type.html" class="H2"> type</a>
+            
+         </div>
+      </details>
+      <div class="nav-part">
+         <div class="nav-uses">
+<details id="-lang" style="position: relative;">
+  <summary>
+  <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+    <path d="M28.2857 37H39.7143M42 42L39.7143 37L42 42ZM26 42L28.2857 37L26 42ZM28.2857 37L34 24L39.7143 37H28.2857Z" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M16 6L17 9" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M6 11H28" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M10 16C10 16 11.7895 22.2609 16.2632 25.7391C20.7368 29.2174 28 32 28 32" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M24 11C24 11 22.2105 19.2174 17.7368 23.7826C13.2632 28.3478 6 32 6 32" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</summary>
+  <div>
+    <a id="en" href="/en/docs/">English</a>
+    <a id="zh" href="/zh/docs/">简体中文</a>
+    <a id="ru" href="/ru/docs/">pyccкий</a>
+  </div>
+</details>
+</div>
+         <div class="nav-uses">
+<a id="-color-mode" onclick="theme()"><svg t="1661943192283" viewBox="0 0 1024 1024" version="1.1" p-id="4993" width="36" height="36"><path d="M512 128v768h384V128H512zM128 96h768a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H128a32 32 0 0 1-32-32V128a32 32 0 0 1 32-32z" p-id="4994"></path></svg></a>
+</div>
+      </div>
+   </nav>
+   
+   <div class="markdown">
+      
+<div class="overview" id="-overview-x" class="drags">
+  <details class="o1180">
+    <summary>
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none"><path d="M34 10V4H8V38L14 35" stroke="#333333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 44V10H40V44L27 37.7273L14 44Z" fill="#00c0ff" stroke="#333333" stroke-width="3" stroke-linejoin="round"/></svg>
+    </summary>
+  <div id="-overview"></div>
+</details>
+</div>
+<div class="overview" id="-overview-m">
+  <details open>
+    <summary>
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+        <path d="M34 10V4H8V38L14 35" stroke="#333333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M14 44V10H40V44L27 37.7273L14 44Z" fill="#00c0ff" stroke="#333333" stroke-width="3" stroke-linejoin="round" />
+      </svg>
+    </summary>
+    <div id="-m-overview" ></div>
+  </details>
+</div>
+
+      
+<title class="text-center">Use markdown in go</title>
+<p></p>
+<hr>
+<time>
+   Created on 2022-09-30
+</time>
+<time pubdate>
+   Last Update 2022-10-30
+</time>
+<h1>Use markdown in go</h1>
+<h2>Getting Started</h2>
+
+<h3>Use directory</h3>
+
+<p>Write directory file (saved in ./posts/zh/.yml)
+The first item is the file name with suffix removed, and the second item is the title</p>
+
+<pre><code class="language-yml">index: &quot;Docs&quot;
+func: -
+</code></pre>
+
+<p>The folder does not need a title name, which is determined by the index written by. yml under it, but needs to be specified here</p>
+
+<p>The first item that does not exist will be ignored</p>
+
+<h3>Rendering</h3>
+
+<p>The go application will parse out the document and directory structure converted to markup language</p>
+
+<p>javaScript will perform other functions of the page</p>
+
+<p><strong><em>Code highlighting and theme colors</em></strong></p>
+
+<p>Third party javascript plug-in (Highlight. js) and style parser (Less. js) are used</p>
+
+<h3>Document Rules</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Property</th>
+<th align="center">Line</th>
+<th align="center">Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Window title</td>
+<td align="center">1</td>
+<td align="center">string, remove &ldquo;# &ldquo;</td>
+</tr>
+
+<tr>
+<td align="center">Center title</td>
+<td align="center">1</td>
+<td align="center">string, remove &ldquo;# &ldquo;</td>
+</tr>
+
+<tr>
+<td align="center">Description/Summary</td>
+<td align="center">2</td>
+<td align="center">Original String</td>
+</tr>
+
+<tr>
+<td align="center">Creation date</td>
+<td align="center">3</td>
+<td align="center">original string</td>
+</tr>
+
+<tr>
+<td align="center">Update Date</td>
+<td align="center">4</td>
+<td align="center">Original String</td>
+</tr>
+
+<tr>
+<td align="center">Author</td>
+<td align="center">5</td>
+<td align="center">Markup Language</td>
+</tr>
+
+<tr>
+<td align="center">Document</td>
+<td align="center">1∩[6,∞)</td>
+<td align="center">Markup Language</td>
+</tr>
+</tbody>
+</table>
+
+<div style="position: relative;">
+   <a href="/posts/en/index.md" target="_blank">View source</a>
+   <br>
+   <a href="/posts/en/index.md" download="Use markdown in go.md">Download sorce</a>
+   <span style="position: absolute; right:0 ;top:0;"><p><a href="/">STARTRACE</a></p>
+</span>
+</div>
+<hr>
+
+   </div>
+   
+<a id="-totop" href="javascript:scroll(0,0)">
+  <svg width="40" height="40" viewBox="0 0 48 30" fill="none">
+    <path d="M24.0083 14.1006V42.0001" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M12 26L24 14L36 26" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M12 6H36" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</a>
+
+   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+   <script src="/public/js/index.js"></script>
+</body>
+
+</html>

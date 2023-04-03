@@ -1,0 +1,19 @@
+{{define "MarkdownRenderer"}}
+<title class="text-center">{{.Markdown.Title}}</title>
+<p>{{.Markdown.Summary}}</p>
+<hr>
+<time>
+   Created on {{.Markdown.Date}}
+</time>
+<time pubdate>
+   Last Update {{.Markdown.Update}}
+</time>
+{{.Markdown.Body}}
+<div style="position: relative;">
+   <a href="{{.Markdown.OriginFile}}" target="_blank">View source</a>
+   <br>
+   <a href="{{.Markdown.OriginFile}}" download="{{.Markdown.Title}}.md">Download sorce</a>
+   <span style="position: absolute; right:0 ;top:0;">{{.Markdown.Author}}</span>
+</div>
+<hr>
+{{end}}
