@@ -49,6 +49,7 @@ func export(mdpath, out, root string) {
 					map[string]interface{}{
 						"Markdown": Post,
 						"Catalog":  cc,
+						"BaseURL": config.BaseURL,
 					})
 				f.Close()
 			} else {

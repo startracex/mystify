@@ -2,9 +2,9 @@
 
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1.1">
-   <link rel="stylesheet" href="/public/css/posts.css">
+   <link rel="stylesheet" href="{{ .BaseURL }}/public/css/posts.css">
    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css">
-   <link rel="stylesheet/less" type="text/css" href="/public/less/mdstyle.less">
+   <link rel="stylesheet/less" type="text/css" href="{{ .BaseURL }}/public/less/mdstyle.less">
    <script src="//cdn.jsdelivr.net/npm/less@4"></script>
    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -44,7 +44,7 @@
    {{template "totop"}}
    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
    <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
-   <script src="/public/js/index.js"></script>
+   <script src="{{ .BaseURL }}/public/js/index.js"></script>
 </body>
 
 </html>
