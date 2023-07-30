@@ -21,7 +21,6 @@ func I18Ninit(r *gin.Engine) {
 
 func AutoPosts(r *gin.RouterGroup) {
 	docs := r.Group(config.PostsURL)
-	//docs.GET("/*url", func(c *gin.Context) { RenderPost(c) })
 	docs.GET("/*url", func(c *gin.Context) { RenderPost(c) })
 }
 
@@ -35,7 +34,10 @@ func WithLang(r *gin.Engine, url, desc string) {
 		if desc != config.DefaultLang {
 			src = "/README." + desc + ".md"
 		}
-		c.HTML(200, "page.html", gin.H{"Markdown": ReadMarkdown(src)})
+		c.HTML(200, "page.html", gin.H{
+			"Markdown": ReadMarkdown(src),
+			"BaseURL":  config.BaseURL,
+		})
 	})
 	AutoPosts(g)
 }

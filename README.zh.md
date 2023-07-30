@@ -1,5 +1,5 @@
 ---
-author: "[STARTRACEX](https://github.com/STARTRACEX/mystify)"
+author: "[STARTRACEX](https://github.com/startracex/mystify)"
 date: 2022-11-01
 update: 2023-07-30
 summary: A simple site builder

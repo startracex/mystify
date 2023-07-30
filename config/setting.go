@@ -38,7 +38,7 @@ func init() {
 	}
 	if BaseURL[0] != '/' {
 		panic("base-url set failed")
-	}else{
+	} else {
 		if BaseURL[len(BaseURL)-1] != '/' {
 			BaseURL = BaseURL + "/"
 		}

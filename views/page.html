@@ -23,14 +23,14 @@
             </svg>
          </summary>
          <flex-flow flexflow="column" style="margin: 10px">
-            {{range $i, $v := .Catalog}}
+            {{ range $i, $v := .Catalog }}
             <super-a arrow="delta" href="{{ $v.Href }}" class="H{{ $v.Level }}">{{$v.Title}}</super-a>
-            {{end}}
+            {{ end }}
          </flex-flow>
       </details>
       <flex-flow flexflow="column nowrap row-reverse nowrap">
-         {{template "lang"}}
-         {{template "color-mode"}}
+         {{ template "lang" . }}
+         {{ template "color-mode" }}
       </flex-flow>
    </nav-aside>
    <div class="markdown">
