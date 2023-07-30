@@ -1,9 +1,26 @@
 {{define "totop"}}
-<a id="-totop" href="javascript:scroll(0,0)">
+<a id="-totop" href="javascript:scroll(0,0)"
+  style="color: inherit;cursor: pointer;opacity:0.32; position: fixed;z-index: 990;right: 3%;bottom: 7.5%;transition: all 0.35s;">
   <svg width="40" height="40" viewBox="0 0 48 30" fill="none">
-    <path d="M24.0083 14.1006V42.0001" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M12 26L24 14L36 26" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M12 6H36" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M24.0083 14.1006V42.0001" stroke="#currentColor" stroke-width="3" stroke-linecap="round"
+      stroke-linejoin="round" />
+    <path d="M12 26L24 14L36 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+      stroke-linejoin="round" />
+    <path d="M12 6H36" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
+  <script>
+    const totop = document.querySelector("#-totop");
+    let scro = 0;
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop > scro) {
+        totop.style.opacity = "0.32";
+      }
+      if (scrollTop < scro) {
+        totop.style.opacity = "0.65";
+      }
+      scro = scrollTop;
+    })
+  </script>
 </a>
 {{end}}

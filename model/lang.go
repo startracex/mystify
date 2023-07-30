@@ -2,42 +2,40 @@ package model
 
 import (
 	"github.com/gin-gonic/gin"
-	"md/config"
+	"main/config"
+	"os"
 )
 
-type Lang struct {
-	Url string
-	Desc string
-}
+var LangMap map[string]string = make(map[string]string)
 
-var ZH = Lang{Url: "/zh", Desc: "zh"}
-var EN = Lang{Url: "/en", Desc: "en"}
-var RU = Lang{Url: "/ru", Desc: "ru"}
-
-func I18ninit(r *gin.Engine) {
-	EN.i18n(r)
-	ZH.i18n(r)
-	RU.i18n(r)
-}
-
-func (l Lang) i18n(r *gin.Engine) {
-	g := r.Group(l.Url, func(c *gin.Context) {
-		ResetCookie(c, "lang", l.Desc)
-		c.Set("lang", l.Desc)
-	})
-
-	g.GET("/", func(c *gin.Context) {
-		src := "/README.md"
-		if l.Desc != config.DefaultLang {
-			src = "/README." + l.Desc + ".md"
+func I18Ninit(r *gin.Engine) {
+	dirs, _ := os.ReadDir(config.PostsPath)
+	for _, v := range dirs {
+		name := v.Name()
+		LangMap[name] = config.BaseURL + name
+		if v.IsDir() {
+			WithLang(r, config.BaseURL+name, name)
 		}
-		c.HTML(200, "posts.html", gin.H{"Markdown": ReadMarkdown(src)})
-	})
-	AutoPosts(g)
+	}
 }
 
 func AutoPosts(r *gin.RouterGroup) {
 	docs := r.Group(config.PostsURL)
+	//docs.GET("/*url", func(c *gin.Context) { RenderPost(c) })
 	docs.GET("/*url", func(c *gin.Context) { RenderPost(c) })
 }
 
+func WithLang(r *gin.Engine, url, desc string) {
+	g := r.Group(url, func(c *gin.Context) {
+		ResetCookie(c, "lang", desc)
+		c.Set("lang", desc)
+	})
+	g.GET("/", func(c *gin.Context) {
+		src := "/README.md"
+		if desc != config.DefaultLang {
+			src = "/README." + desc + ".md"
+		}
+		c.HTML(200, "page.html", gin.H{"Markdown": ReadMarkdown(src)})
+	})
+	AutoPosts(g)
+}

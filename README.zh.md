@@ -1,16 +1,13 @@
 ---
-author: "[STARTRACEX](https://github.com/STARTRACEX/MDSiteBuilder)"
+author: "[STARTRACEX](https://github.com/STARTRACEX/mystify)"
 date: 2022-11-01
-update: 2023-01-05
+update: 2023-07-30
 summary: A simple site builder
 ---
-# MDSiteBuilder
+
+# Mystify
 
 ## 入门
-
-这是[STARTRACEX.GITHUB.IO](https://startracex.github.io/)的一部分
-
-[库](https://github.com/STARTRACEX/MDSiteBuilder)
 
 ### URL作为路径
 
@@ -42,12 +39,13 @@ yaml解析以下内容:"author,summary,date,update,title"(字符串类型),"auth
 -dev <设置gin模式为调试>
 
 示例
-main\main.exe -p 8080 -d localhost -dev
+./main \ ./main.exe -p 8080 -d localhost --dev
 ```
 
 在运行后访问这些页面
+
 [主页](http:localhost:8080/)
-[文档](http:localhost:8080/docs/)
+[文档](http:localhost:8080/zh/docs/)
 
 更改语言可在路径首位添加'/zh'或'/ru'或'/en'(默认)
 

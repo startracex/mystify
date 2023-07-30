@@ -9,7 +9,7 @@ var Port = "8080"
 var Domain = "localhost"
 var Dev = false
 var Export = false
-var ExportOut = "out"
+var ExportOut = "docs"
 var Cat = ".yml"
 var DefaultLang = "en"
 var StaticPath = "public"
@@ -38,6 +38,10 @@ func init() {
 	}
 	if BaseURL[0] != '/' {
 		panic("base-url set failed")
+	}else{
+		if BaseURL[len(BaseURL)-1] != '/' {
+			BaseURL = BaseURL + "/"
+		}
 	}
 	if StaticPath == "" || StaticPath[0] == '/' {
 		panic("static-path set failed")

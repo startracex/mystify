@@ -1,3 +1,24 @@
 {{define "color-mode"}}
-<a id="-color-mode" onclick="theme()"><svg t="1661943192283" viewBox="0 0 1024 1024" version="1.1" p-id="4993" width="36" height="36"><path d="M512 128v768h384V128H512zM128 96h768a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H128a32 32 0 0 1-32-32V128a32 32 0 0 1 32-32z" p-id="4994"></path></svg></a>
+<a id="-color-mode" onclick="theme()" style="width: 40px;height: 40px">
+  <svg t="1661943192283" viewBox="0 0 1024 1024" version="1.1" p-id="4993" width="36" height="36">
+    <path
+      d="M512 128v768h384V128H512zM128 96h768a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H128a32 32 0 0 1-32-32V128a32 32 0 0 1 32-32z"
+      fill="currentColor"></path>
+  </svg>
+</a>
+<script>
+  const key = "Theme";
+  const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  const thememode = window.localStorage.getItem(key) || (themeMedia ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", thememode);
+  function theme() {
+    if (document.documentElement.getAttribute("data-theme") === "dark") {
+      document.documentElement.setAttribute("data-theme", "light");
+      window.localStorage.setItem(key, "light");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      window.localStorage.setItem(key, "dark");
+    }
+  }
+</script>
 {{end}}

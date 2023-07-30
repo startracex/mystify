@@ -1,0 +1,47 @@
+<html lang="{{ .Lang }}">
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.1">
+   <link rel="stylesheet" href="{{ .BaseURL }}public/css/next.startrace.games_docs.css">
+   <link rel="stylesheet" href="{{ .BaseURL }}public/css/posts.css">
+   <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+   <script id="MathJax-script" async src="//cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+   <script type="module" src="//cdn.jsdelivr.net/gh/startracex/godown-browser/build/iife.js"></script>
+</head>
+
+<body>
+   <nav-aside style="color:inherit;">
+      <details id="-catalog">
+         <summary>
+            <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+               <path d="M7.94971 11.9497H39.9497" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+               <path d="M7.94971 23.9497H39.9497" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+               <path d="M7.94971 35.9497H39.9497" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            </svg>
+         </summary>
+         <flex-flow flexflow="column" style="margin: 10px">
+            {{range $i, $v := .Catalog}}
+            <super-a arrow="delta" href="{{ $v.Href }}" class="H{{ $v.Level }}">{{$v.Title}}</super-a>
+            {{end}}
+         </flex-flow>
+      </details>
+      <flex-flow flexflow="column nowrap row-reverse nowrap">
+         {{template "lang"}}
+         {{template "color-mode"}}
+      </flex-flow>
+   </nav-aside>
+   <div class="markdown">
+      {{template "overview"}}
+      {{template "MarkdownRenderer" .}}
+   </div>
+   {{template "totop"}}
+   <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+   <script src="{{ .BaseURL }}public/js/index.js"></script>
+   <script src="{{ .BaseURL }}public/js/prism.js"></script>
+
+</body>
+
+</html>

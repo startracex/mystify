@@ -4,11 +4,10 @@ import (
 	"fmt"
 	"html/template"
 	"io"
-	"md/config"
-	"strings"
-
+	"main/config"
 	"os"
 	"path"
+	"strings"
 )
 
 var c = ""
@@ -24,46 +23,47 @@ func export(mdpath, out, root string) {
 	for _, fi := range dirEntry {
 		thispath := path.Join(mdpath, fi.Name())
 		if fi.IsDir() {
-			export(thispath, out,root)
+			export(thispath, out, root)
 		} else {
 			if path.Ext(fi.Name()) == ".md" {
 				Post := ReadMarkdown(thispath)
-				thispath=strings.ReplaceAll(thispath,root,"")
+				thispath = strings.ReplaceAll(thispath, root, "")
 				// 创建out下的同名html
 				htmldir := path.Join(out, path.Dir(thispath))
-				fmt.Println(htmldir,thispath)
+				fmt.Println(htmldir, thispath)
 				os.MkdirAll(htmldir, 0777)
 				f, _ := os.Create(path.Join(out, thispath[:len(thispath)-3]+".html"))
-				// 将views下的layou和pages中的模板进行解析，将Post传入模板中{{.Markdown}}进行渲染
+				// 将views下的layou和page中的模板进行解析
 				t := template.Must(template.ParseFiles(
-					WalkHtmlTemplate(config.Html)...,
+					WalkHtml(config.Html)...,
 				))
 				// catapath的值是thispath在第二个/后的值
 				catapath := strings.Split(thispath, "/")[1]
-				// 储存当前值，防止重复
+				// 储存当前值,防止重复
 				if catapath != c {
 					c = catapath
-					cc = ExportCata(path.Join(config.PostsPath, catapath, ".yml"))
+					cc = ExportCata(path.Join(config.PostsPath, catapath, config.Cat))
 				}
-				t.ExecuteTemplate(f, "posts.html",
+				lang := strings.Split(thispath, "/")[0]
+				t.ExecuteTemplate(f, "page.html",
 					map[string]interface{}{
 						"Markdown": Post,
 						"Catalog":  cc,
-						"BaseURL": config.BaseURL,
+						"BaseURL":  config.BaseURL,
+						"Lang":     lang,
 					})
 				f.Close()
 			} else {
-				// 如果不是md文件，直接复制到out
-				if fi.Name() != ".yml" {
+				// 如果不是md文件,直接复制到out
+				if fi.Name() != config.Cat {
 					CopyFile(path.Join(out, thispath), thispath)
 				}
 			}
 		}
 	}
-	// 复制public下的文件到out
-	// CopyDir("public", path.Join(out, "public"))
+	CopyDir(config.StaticPath, path.Join(out, config.StaticPath))
 }
-func CopyFile(dstName, srcName string) (written int64, err error) {
+func CopyFile(dstName, srcName string) {
 	src, err := os.Open(srcName)
 	if err != nil {
 		return
@@ -74,7 +74,10 @@ func CopyFile(dstName, srcName string) (written int64, err error) {
 		return
 	}
 	defer dst.Close()
-	return io.Copy(dst, src)
+	_, err = io.Copy(dst, src)
+	if err != nil {
+		return
+	}
 }
 func CopyDir(src, out string) {
 	dirEntry, _ := os.ReadDir(src)
@@ -82,7 +85,10 @@ func CopyDir(src, out string) {
 		thispath := path.Join(src, fi.Name())
 		if fi.IsDir() {
 			// 创建out下的同名文件夹
-			os.MkdirAll(path.Join(out, fi.Name()), 0777)
+			err := os.MkdirAll(path.Join(out, fi.Name()), 0777)
+			if err != nil {
+				return
+			}
 			CopyDir(thispath, path.Join(out, fi.Name()))
 		} else {
 			CopyFile(path.Join(out, fi.Name()), thispath)

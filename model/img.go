@@ -1,10 +1,10 @@
 package model
 
 import (
-	"md/config"
+	"github.com/gin-gonic/gin"
+	"main/config"
 	"path"
 	"strings"
-	"github.com/gin-gonic/gin"
 )
 
 func Img(c *gin.Context) {

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"md/config"
-	"md/model"
-	"strings"
-
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"main/config"
+	"main/model"
+	"strings"
 )
 
 func main() {
@@ -13,19 +13,14 @@ func main() {
 		model.Export(config.PostsPath, config.ExportOut)
 		return
 	}
-
 	if !config.Dev {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	r := gin.New()
 	r.Use(gin.Recovery())
-	var htmlg []string
-	for _, k := range model.WalkHtmlTemplate(config.Html) {
-		if strings.HasSuffix(k, ".html") {
-			htmlg = append(htmlg, k)
-		}
-	}
-	r.LoadHTMLFiles(htmlg...)
+
+	/* Load html */
+	r.LoadHTMLFiles(model.WalkHtml(config.Html)...)
 
 	/* Static file */
 	r.Static("/"+config.StaticPath, config.StaticPath)
@@ -33,20 +28,26 @@ func main() {
 		r.Static(config.PostsPath, config.PostsPath)
 	}
 	r.StaticFile("/favicon.ico", config.StaticPath+"/favicon.ico")
+
 	r.StaticFile("/robots.txt", config.StaticPath+"/robots.txt")
+
+	/* Readme */
 	r.StaticFile("/README.md", "./README.md")
 	r.StaticFile("/README.zh.md", "./README.zh.md")
 	r.StaticFile("/README.ru.md", "./README.ru.md")
 
-	/* root */
+	/* Root */
 	r.GET("/", func(c *gin.Context) {
 		post := model.ReadMarkdown("/README.md")
-		c.HTML(200, "posts.html", gin.H{"Markdown": post})
+		c.HTML(200, "page.html", gin.H{"Markdown": post})
 	})
-	model.AutoPosts(r.Group("/"))
-	/* main */
-	model.I18ninit(r)
-	/* img */
+
+	/* Main */
+	model.I18Ninit(r)
+	/* Img */
 	r.GET("/img", model.Img)
-	r.Run(":" + config.Port)
+	err := r.Run(":" + config.Port)
+	if err != nil {
+		fmt.Printf("Run failed at :%s", config.Port)
+	}
 }

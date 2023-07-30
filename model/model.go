@@ -2,7 +2,7 @@ package model
 
 import (
 	"html/template"
-	"md/config"
+	"main/config"
 	"os"
 	"path"
 	"regexp"
@@ -13,34 +13,6 @@ import (
 	"github.com/russross/blackfriday"
 )
 
-// md文件的元数据结构
-type Meta struct {
-	Title   string   `yaml:"title,omitempty"`
-	Author  string   `yaml:"author,omitempty"`
-	Authors []string `yaml:"authors,omitempty"`
-	Summary string   `yaml:"summary,omitempty"`
-	Date    string   `yaml:"date,omitempty"`
-	Update  string   `yaml:"update,omitempty"`
-}
-
-// 渲染文档的元数据结构
-type Post struct {
-	Title      string
-	Date       string
-	Update     string
-	Summary    string
-	Author     template.HTML
-	Body       template.HTML
-	OriginFile string // Origin File Path
-}
-
-// 目录文件数据结构
-type Cata struct {
-	Name  string
-	Level string
-	Super string
-}
-
 func RenderPost(c *gin.Context) {
 	var dir string = config.DefaultLang
 	l, e := c.Get("lang")
@@ -49,7 +21,7 @@ func RenderPost(c *gin.Context) {
 	}
 	mdFilePath := dir + c.Param("url")
 	if path.Ext(mdFilePath) != "" || path.Ext(mdFilePath) != ".md" {
-		c.Abort()
+		c.AbortWithStatus(404)
 	}
 	// 检查存在性
 	// 直接存在.md
@@ -65,7 +37,7 @@ func RenderPost(c *gin.Context) {
 				source = config.PostsPath + "/" + mdFilePath
 				if !IsExist(source) {
 					// 出错
-					c.Abort()
+					c.AbortWithStatus(404)
 				}
 			}
 		}
@@ -73,15 +45,17 @@ func RenderPost(c *gin.Context) {
 	//源文件路径
 	post := ReadMarkdown(source)
 	cat := WalkCata(path.Join(config.PostsPath, dir, config.Cat))
-	c.HTML(200, "posts.html", gin.H{
+	c.HTML(200, "page.html", gin.H{
 		"Markdown": post,
 		"Catalog":  cat,
+		"BaseURL":  config.BaseURL,
+		"Lang":     dir,
 	})
 }
 
 func ReadMarkdown(source string) Post {
 	var body, summary, author string
-	var title, date, update string = "Undefined", "Unknow", "Unknow"
+	var title, date, update string = "Undefined", "Unknown", "Unknown"
 	fileread, err := os.ReadFile(path.Join(".", source))
 	if err != nil {
 		return Post{
@@ -99,7 +73,7 @@ func ReadMarkdown(source string) Post {
 	yaml.Unmarshal([]byte(meta), &config)
 	if metalen > 0 && !isYamlEmpty(config) {
 		if config.Title == "" {
-			title = getTitie(string(fileread))
+			title = getTitle(string(fileread))
 		} else {
 			title = config.Title
 		}
@@ -153,13 +127,13 @@ func getMeta(data string) (string, int) {
 }
 
 // 返回data中一级标题
-func getTitie(data string) string {
+func getTitle(data string) string {
 	re := regexp.MustCompile(`(#)[^\n]*?\n`)
 	return strings.Replace(re.FindString(data), "# ", "", 1)
 }
 
-func isYamlEmpty(config Meta) bool {
-	return config.Title == "" && config.Date == "" && config.Update == "" && config.Summary == "" && len(config.Author) == 0
+func isYamlEmpty(meta Meta) bool {
+	return meta.Title == "" && meta.Date == "" && meta.Update == "" && meta.Summary == "" && len(meta.Author) == 0
 }
 
 /* Deprecated */

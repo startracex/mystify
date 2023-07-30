@@ -1,18 +1,57 @@
 {{define "lang"}}
-<details id="-lang" style="position: relative;">
+<details id="-lang" style="position: relative; background-color: inherit; width: 40px;height: 40px">
   <summary>
-  <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
-    <path d="M28.2857 37H39.7143M42 42L39.7143 37L42 42ZM26 42L28.2857 37L26 42ZM28.2857 37L34 24L39.7143 37H28.2857Z" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M16 6L17 9" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M6 11H28" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M10 16C10 16 11.7895 22.2609 16.2632 25.7391C20.7368 29.2174 28 32 28 32" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M24 11C24 11 22.2105 19.2174 17.7368 23.7826C13.2632 28.3478 6 32 6 32" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-  </svg>
-</summary>
+    <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+      <path d="M28.2857 37H39.7143M42 42L39.7143 37L42 42ZM26 42L28.2857 37L26 42ZM28.2857 37L34 24L39.7143 37H28.2857Z"
+        stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M16 6L17 9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M6 11H28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M10 16C10 16 11.7895 22.2609 16.2632 25.7391C20.7368 29.2174 28 32 28 32" stroke="currentColor"
+        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M24 11C24 11 22.2105 19.2174 17.7368 23.7826C13.2632 28.3478 6 32 6 32" stroke="currentColor"
+        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </summary>
   <div>
     <a id="en" href="/en/docs/">English</a>
     <a id="zh" href="/zh/docs/">简体中文</a>
-    <a id="ru" href="/ru/docs/">pyccкий</a>
+    <a id="ru" href="/ru/docs/">Русский</a>
   </div>
+  <style>
+    #-lang div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: .1px solid;
+      position: absolute;
+      left: 40px;
+      top: auto;
+      bottom: 0;
+      padding: 4px;
+      width: max-content;
+      height: max-content;
+      border-radius: 6px;
+      background-color: var(--nav);
+    }
+
+    #-lang div a {
+      margin: 4px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: inherit;
+    }
+
+    #-lang div a:hover {
+      background-color: var(--nav_hov);
+    }
+
+    @media screen and (max-width: 780px) {
+      #-lang div {
+        left: auto;
+        right: 0;
+        top: 40px;
+      }
+    }
+  </style>
 </details>
 {{end}}

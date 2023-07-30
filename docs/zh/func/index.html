@@ -1,0 +1,243 @@
+<html lang="">
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.1">
+   <link rel="stylesheet" href="/mystify/public/css/next.startrace.games_docs.css">
+   <link rel="stylesheet" href="/mystify/public/css/posts.css">
+   <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+   <script id="MathJax-script" async src="//cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+   <script type="module" src="//cdn.jsdelivr.net/gh/startracex/godown-browser/build/iife.js"></script>
+</head>
+
+<body>
+   <nav-aside style="color:inherit;">
+      <details id="-catalog">
+         <summary>
+            <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+               <path d="M7.94971 11.9497H39.9497" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+               <path d="M7.94971 23.9497H39.9497" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+               <path d="M7.94971 35.9497H39.9497" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            </svg>
+         </summary>
+         <flex-flow flexflow="column" style="margin: 10px">
+            
+            <super-a arrow="delta" href="/mystify/zh/index.html" class="H1"> 首页</super-a>
+            
+            <super-a arrow="delta" href="/mystify/zh/func/index.html" class="H2"> 功能页</super-a>
+            
+            <super-a arrow="delta" href="/mystify/zh/func/type.html" class="H2"> 类型</super-a>
+            
+            <super-a arrow="delta" href="/mystify/zh/func/v/a.html" class="H3"> a</super-a>
+            
+         </flex-flow>
+      </details>
+      <flex-flow flexflow="column nowrap row-reverse nowrap">
+         
+<details id="-lang" style="position: relative; background-color: inherit; width: 40px;height: 40px">
+  <summary>
+    <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+      <path d="M28.2857 37H39.7143M42 42L39.7143 37L42 42ZM26 42L28.2857 37L26 42ZM28.2857 37L34 24L39.7143 37H28.2857Z"
+        stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M16 6L17 9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M6 11H28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M10 16C10 16 11.7895 22.2609 16.2632 25.7391C20.7368 29.2174 28 32 28 32" stroke="currentColor"
+        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M24 11C24 11 22.2105 19.2174 17.7368 23.7826C13.2632 28.3478 6 32 6 32" stroke="currentColor"
+        stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </summary>
+  <div>
+    <a id="en" href="/en/docs/">English</a>
+    <a id="zh" href="/zh/docs/">简体中文</a>
+    <a id="ru" href="/ru/docs/">Русский</a>
+  </div>
+  <style>
+    #-lang div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: .1px solid;
+      position: absolute;
+      left: 40px;
+      top: auto;
+      bottom: 0;
+      padding: 4px;
+      width: max-content;
+      height: max-content;
+      border-radius: 6px;
+      background-color: var(--nav);
+    }
+
+    #-lang div a {
+      margin: 4px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: inherit;
+    }
+
+    #-lang div a:hover {
+      background-color: var(--nav_hov);
+    }
+
+    @media screen and (max-width: 780px) {
+      #-lang div {
+        left: auto;
+        right: 0;
+        top: 40px;
+      }
+    }
+  </style>
+</details>
+
+         
+<a id="-color-mode" onclick="theme()" style="width: 40px;height: 40px">
+  <svg t="1661943192283" viewBox="0 0 1024 1024" version="1.1" p-id="4993" width="36" height="36">
+    <path
+      d="M512 128v768h384V128H512zM128 96h768a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H128a32 32 0 0 1-32-32V128a32 32 0 0 1 32-32z"
+      fill="currentColor"></path>
+  </svg>
+</a>
+<script>
+  const key = "Theme";
+  const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  const thememode = window.localStorage.getItem(key) || (themeMedia ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", thememode);
+  function theme() {
+    if (document.documentElement.getAttribute("data-theme") === "dark") {
+      document.documentElement.setAttribute("data-theme", "light");
+      window.localStorage.setItem(key, "light");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      window.localStorage.setItem(key, "dark");
+    }
+  }
+</script>
+
+      </flex-flow>
+   </nav-aside>
+   <div class="markdown">
+      
+<div class="overview" id="-overview-x" class="drags">
+  <details class="o1180">
+    <summary>
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+        <path d="M34 10V4H8V38L14 35" stroke="#333333" stroke-width="3" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M14 44V10H40V44L27 37.7273L14 44Z" fill="#00c0ff" stroke="#333333" stroke-width="3"
+          stroke-linejoin="round" />
+      </svg>
+    </summary>
+    <div id="-overview"></div>
+  </details>
+</div>
+<div class="overview" id="-overview-m">
+  <details open>
+    <summary>
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+        <path d="M34 10V4H8V38L14 35" stroke="#333333" stroke-width="3" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M14 44V10H40V44L27 37.7273L14 44Z" fill="#00c0ff" stroke="#333333" stroke-width="3"
+          stroke-linejoin="round" />
+      </svg>
+    </summary>
+    <div id="-m-overview"></div>
+  </details>
+</div>
+
+      
+<title class="text-center">用于go的功能</title>
+<p></p>
+<hr>
+<time>
+   Created on 2022-09-30
+</time>
+<time pubdate>
+   Last Update 2023-01-04
+</time>
+<h2>概览</h2>
+
+<p>这些功能位于./model</p>
+
+<pre><code class="language-go">func RenderPost(c *gin.Context) {}
+</code></pre>
+
+<p><code>RenderPost</code> 将会合并语言与请求路径为地址并解析文档，并渲染至HTML模板</p>
+
+<pre><code class="language-go">func ReadMarkdown(source string) Post {}
+</code></pre>
+
+<p><code>ReadMarkdown</code> 解析source并返回Post结构,将会尝试以yaml解析Meta数据,失败将使用以行标准读取Meta</p>
+
+<pre><code class="language-go">func AutoPosts(r *gin.RouterGroup) {}
+</code></pre>
+
+<p><code>AutoPosts</code> 会将路由组r之后的任何路由作为文档地址</p>
+
+<pre><code class="language-go">func WalkCata(ymlpath string) []Cat {}
+</code></pre>
+
+<p><code>WalkCata</code> 将会读取ymlpath和其中包含的所有目录文件并返回Cat切片</p>
+
+<pre><code class="language-go">func Img(c *gin.Context) {}
+</code></pre>
+
+<p><code>Img</code> 将会通过搜索路径<code>pathname</code>和<code>filepath</code>来发送非<code>/public</code>起始的相对路径的图片</p>
+
+<h2>已弃用</h2>
+
+<pre><code class="language-go">func RenderMarkdown(mdFilePath string) Post {}
+</code></pre>
+
+<p><code>RenderMarkdown</code> 将传入的字符串作为地址返回解析的目标文档</p>
+
+<pre><code class="language-go">func RenderCatalog(DirectoryFilePath string) []Cata {}
+</code></pre>
+
+<p><code>RenderCatalog</code> 将读取传入的DirectoryFilePath并以&rdquo;\\&ldquo;为分割符号,分割缩进等级，标题，URL路径，返回分割完毕的数据切片</p>
+
+<div style="position: relative;">
+   <a href="/posts/zh/func/index.md" target="_blank">View source</a>
+   <br>
+   <a href="/posts/zh/func/index.md" download="用于go的功能.md">Download source</a>
+   <span style="position: absolute; right:0 ;top:0;"><p><a href="/">STARTRACEX</a></p>
+</span>
+</div>
+<hr>
+
+   </div>
+   
+<a id="-totop" href="javascript:scroll(0,0)"
+  style="color: inherit;cursor: pointer;opacity:0.32; position: fixed;z-index: 990;right: 3%;bottom: 7.5%;transition: all 0.35s;">
+  <svg width="40" height="40" viewBox="0 0 48 30" fill="none">
+    <path d="M24.0083 14.1006V42.0001" stroke="#currentColor" stroke-width="3" stroke-linecap="round"
+      stroke-linejoin="round" />
+    <path d="M12 26L24 14L36 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+      stroke-linejoin="round" />
+    <path d="M12 6H36" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+  <script>
+    const totop = document.querySelector("#-totop");
+    let scro = 0;
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop > scro) {
+        totop.style.opacity = "0.32";
+      }
+      if (scrollTop < scro) {
+        totop.style.opacity = "0.65";
+      }
+      scro = scrollTop;
+    })
+  </script>
+</a>
+
+   <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+   <script src="/mystify/public/js/index.js"></script>
+   <script src="/mystify/public/js/prism.js"></script>
+
+</body>
+
+</html>
